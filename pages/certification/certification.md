@@ -4,11 +4,11 @@
 
 ## 이 장의 문서
 
-- [KCNA](KCNA.md)
+- [KCNA](pages/certification/KCNA.md)
   - Kubernetes와 클라우드 네이티브의 기초 개념을 다루는 시험의 학습 범위를 정리합니다.
-- [CKA](CKA.md)
+- [CKA](pages/certification/CKA.md)
   - Kubernetes 클러스터 관리와 운영을 다루는 시험의 학습 범위를 정리합니다.
-- [CKAD](CKAD.md)
+- [CKAD](pages/certification/CKAD.md)
   - Kubernetes 애플리케이션 설계와 배포를 다루는 시험의 학습 범위를 정리합니다.
 - [Linux Foundation 자격증 할인 정보](linux-foundation-certification-discounts.md)
   - 시험 응시권 구매 시 참고할 할인 정보 링크를 모았습니다.
