@@ -1,0 +1,46 @@
+# 컨테이너 이미지를 최적화해야 하는 이유 (why-optimize-container-images.md)
+Kubernetes에서 컨테이너를 얼마나 빠르게 시작할 수 있는지는 배포와 스케일 아웃 속도에 영향을 줍니다.
+
+컨테이너를 실행하기 위해서는 Registry에서 컨테이너 이미지를 가져와야 하는데, **컨테이너 이미지가 클수록 이미지를 다운로드하고 압축을 해제하는 데 더 많은 시간이 소요**됩니다.
+
+특히 Karpenter와 Spot Instance를 사용하여 **Node의 생성과 교체가 빈번한 환경에서는 새롭게 생성된 Node에 컨테이너 이미지가 캐싱되어 있지 않아 Registry에서 이미지를 가져와야 하므로 컨테이너 이미지 크기를 최적화하는 것이 더욱 중요**합니다.
+
+또한 **컨테이너 이미지에 포함되는 패키지와 라이브러리가 많을수록 잠재적인 취약점과 Attack Surface이 증가**하기 때문에 컨테이너 이미지를 최적화해야 합니다.
+
+## Multi-stage build 사용하기
+**Multi-stage Build란 하나의 Dockerfile에서 여러 개의 FROM을 사용하여 빌드 환경과 실행 환경을 분리하고 실행에 필요한 결과물만 컨테이너 이미지에 포함하는 방식**입니다.
+
+이를 통해 **빌드에 필요한 도구와 의존성을 최종 이미지에서 제외하여 컨테이너 이미지를 최적화**할 수 있습니다.
+
+예를 들어 JDK와 Gradle/Maven은 Build Stage에만 두고, 최종 컨테이너 이미지에는 JRE와 JAR만 남기는 방식입니다.
+
+## Minimal base image 사용하기
+**Minimal base image란 애플리케이션을 실행하는데 필요한 최소한의 패키지와 라이브러리만 포함하도록 구성된 Base image**입니다.
+
+불필요한 OS 패키지와 유틸리티를 제외함으로써 이미지 크기와 Attack Surface를 줄일 수 있습니다. 
+
+대표적으로 Alpine, Distroless, Scratch 등이 있습니다.
+
+## Layer 최적화하기
+컨테이너 이미지는 여러 개의 Layer로 겹겹이 쌓인 구조로 구성되며 `RUN`, `COPY`, `ADD` 와 같은 Dockerfile 명령어가 실행될 때마다 하나의 Layer가 생성됩니다. **이전 Layer에 기록된 파일은 이후 Layer에서 삭제해도 실제로는 제거되지 않고 이전 Layer에는 남아있어 이미지 크기에 영향을 줄 수 있습니다.**
+
+따라서 **패키지 설치와 캐시 삭제를 하나의 RUN에서 처리하여 불필요한 데이터가 Layer에 남지 않도록 구성하는 것이 좋습니다.** 또한, **변경 빈도가 낮은 작업을 Dockerfile 앞쪽에 배치하고, 변경 빈도가 높은 작업을 뒤쪽에 배치하면 빌드 캐시 재사용률이 높아지고 빌드 속도도 개선**할 수 있습니다.
+
+``` Dockerfile
+# 안좋은 예: Layer가 분리되어 이전 Layer의 파일이 그대로 남음
+RUN apt-get update && apt-get install -y curl
+RUN rm -rf /var/lib/apt/lists/*
+
+# 좋은 예: 하나의 RUN에서 설치와 정리를 함께 처리
+RUN apt-get update && apt-get install -y curl \
+    && rm -rf /var/lib/apt/lists/*
+```
+
+## 불필요한 패키지 및 파일 포함하지 않기
+**컨테이너 이미지에는 애플리케이션 실행에 필요한 파일과 패키지만 포함하도록 구성**해야합니다.
+
+Runtime에 필요하지 않은 패키지는 제외하고, `COPY . .` 처럼 전체 파일을 복사하기보다 필요한 파일만 명시적으로 COPY하여 의도하지 않은 파일이 이미지에 포함되지 않도록 구성하는 것이 좋습니다.
+
+또한 `.dockerignore`를 사용하여 민감한 파일이나 불필요한 파일이 Build Context에 포함되지 않도록 구성해야합니다.
+
+이를 통해 이미지 크기를 줄일 뿐만 아니라 불필요한 패키지와 도구로 인해 발생할 수 있는 취약점과 Attack Surface도 함께 줄일 수 있습니다.
