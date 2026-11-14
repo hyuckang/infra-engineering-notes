@@ -1,14 +1,20 @@
 # 목차
 - [01. Containers & Kubernetes](pages/01.containers-kubernetes/01.containers-kubernetes.md)
-  - [01-1. 컨테이너 이미지를 최적화해야 하는 이유](pages/01.containers-kubernetes/01-1.why-optimize-container-images.md)
-  - [01-2. EKS에서 Graceful Shutdown 하는 방법](pages/01.containers-kubernetes/01-2.eks-graceful-shutdown.md)
+  - [01-1. Cloud Native](pages/01.containers-kubernetes/01-1.cloud-native.md)
+  - [01-2. Kubernetes Core Concepts](pages/01.containers-kubernetes/01-2.kubernetes-core-concepts.md)
+  - [01-3. Kubernetes Components](pages/01.containers-kubernetes/01-3.kubernetes-components.md)
+  - [01-4. Kubernetes Cluster Administration](pages/01.containers-kubernetes/01-4.kubernetes-cluster-administration.md)
+  - [01-5. Kubernetes Scheduling](pages/01.containers-kubernetes/01-5.kubernetes-scheduling.md)
+  - [01-20. Container Image Best Practices](pages/01.containers-kubernetes/01-20.container-image-bestpractices.md)
+  - [01-21. 컨테이너 이미지를 최적화해야 하는 이유](pages/01.containers-kubernetes/01-21.why-optimize-container-images.md)
+  - [01-30. EKS에서 Graceful Shutdown 하는 방법](pages/01.containers-kubernetes/01-30.eks-graceful-shutdown.md)
 
 - [04. Observability](pages/04.observability/04.observability.md)
   - [04-1. 모니터링과 옵저버빌리티](pages/04.observability/04-1.monitoring-observability.md)
   - [04-2. Datadog Unified Service Tagging으로 환경과 버전별 변화 추적하기](pages/04.observability/04-2.datadog-unified-service-tagging.md)
 
 - [05. DevOps & SRE](pages/05.devops-sre/05.devops-sre.md)
-  - [05-1. SRE와 SLO, SLI](pages/05.devops-sre/05-1.sre-slo-sli.md)
+  - [05-2. SRE와 SLO, SLI](pages/05.devops-sre/05-2.sre-slo-sli.md)
 
 - [30. 자격증 취득하기](pages/30.certification/30.certification.md)
   - [30-1. KCNA](pages/30.certification/30-1.KCNA.md)
