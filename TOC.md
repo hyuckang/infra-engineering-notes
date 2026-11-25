@@ -9,6 +9,9 @@
   - [01-21. 컨테이너 이미지를 최적화해야 하는 이유](pages/01.containers-kubernetes/01-21.why-optimize-container-images.md)
   - [01-30. EKS에서 Graceful Shutdown 하는 방법](pages/01.containers-kubernetes/01-30.eks-graceful-shutdown.md)
 
+- [02. AWS](pages/02.aws/02-3.AWS.md)
+  - [02-02.AWS 멀티 계정 관리](pages/02.aws/02-02.aws-multi-account-management.md)
+
 - [04. Observability](pages/04.observability/04.observability.md)
   - [04-1. 모니터링과 옵저버빌리티](pages/04.observability/04-1.monitoring-observability.md)
   - [04-2. Datadog Unified Service Tagging으로 환경과 버전별 변화 추적하기](pages/04.observability/04-2.datadog-unified-service-tagging.md)
