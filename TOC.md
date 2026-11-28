@@ -9,7 +9,7 @@
   - [01-21. 컨테이너 이미지를 최적화해야 하는 이유](pages/01.containers-kubernetes/01-21.why-optimize-container-images.md)
   - [01-30. EKS에서 Graceful Shutdown 하는 방법](pages/01.containers-kubernetes/01-30.eks-graceful-shutdown.md)
 
-- [02. AWS](pages/02.aws/02-00.AWS.md)
+- [02. AWS](pages/02.aws/02-00.aws.md)
   - [02-02.AWS 멀티 계정 관리](pages/02.aws/02-02.aws-multi-account-management.md)
 
 - [04. Observability](pages/04.observability/04.observability.md)
@@ -19,8 +19,11 @@
 - [05. DevOps & SRE](pages/05.devops-sre/05.devops-sre.md)
   - [05-2. SRE와 SLO, SLI](pages/05.devops-sre/05-2.sre-slo-sli.md)
 
-- [30. 자격증 취득하기](pages/30.certification/30.certification.md)
-  - [30-1. KCNA](pages/30.certification/30-1.KCNA.md)
-  - [30-2. CKA](pages/30.certification/30-2.CKA.md)
-  - [30-3. CKAD](pages/30.certification/30-3.CKAD.md)
+- [30. 자격증 취득하기](pages/30.certification/30-00.certification.md)
+  - [30-01. KCNA](pages/30.certification/30-01.KCNA.md)
+  - [30-02. CKA](pages/30.certification/30-02.CKA.md)
+  - [30-03. CKAD](pages/30.certification/30-03.CKAD.md)
+  - [30-04. KCSA](pages/30.certification/30-04.KCSA.md)
+  - [30-05. CKS](pages/30.certification/30-05.CKS.md)
+  - [30-06. CKNE](pages/30.certification/30-06.CKNE.md)
   - [30-90. Linux Foundation 자격증 할인 정보](pages/30.certification/30-90.linux-foundation-certification-discounts.md)
